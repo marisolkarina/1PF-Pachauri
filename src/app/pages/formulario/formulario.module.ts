@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { DirectivesModule } from 'src/app/shared/directives/directives.module';
 
 
 @NgModule({
@@ -18,8 +19,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatSelectModule
-
+    MatSelectModule,
+    DirectivesModule
   ],
   exports: [
     FormularioComponent
