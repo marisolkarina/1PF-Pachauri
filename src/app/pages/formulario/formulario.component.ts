@@ -16,16 +16,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent {
-  // myForm: FormGroup;
-
-  // constructor(public fb: FormBuilder) {
-  //   this.myForm = this.fb.group({
-  //     name: ['',[Validators.required]],
-  //     lastname: ['', [Validators.required]],
-  //     grado: ['', [Validators.required]],
-  //     email: ['', [Validators.required, Validators.email]]
-  //   });
-  // }
 
   controlName = new FormControl('',[Validators.required]);
   controlLastname = new FormControl('', [Validators.required]);
