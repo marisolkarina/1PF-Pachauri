@@ -21,7 +21,12 @@ export class AbmAlumnosComponent {
   constructor(private dialogRef: MatDialogRef<AbmAlumnosComponent>) {}
 
   guardar(): void {
-    this.dialogRef.close(this.myFormAdd.value);
+    if(this.myFormAdd.valid) {
+      this.dialogRef.close(this.myFormAdd.value);
+    }
+    else {
+      this.myFormAdd.markAllAsTouched();
+    }
   }
 
 }

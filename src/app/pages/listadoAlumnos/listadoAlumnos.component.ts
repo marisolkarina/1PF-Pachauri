@@ -48,7 +48,14 @@ export class ListadoAlumnosComponent {
     const dialog = this.matDialog.open(AbmAlumnosComponent);
     dialog.afterClosed().subscribe((valor) => {
       if (valor) {
-        this.dataSource.data = [...this.dataSource.data, valor];
+        this.dataSource.data = [
+          ...this.dataSource.data, 
+          {
+            ...valor,
+            id: this.dataSource.data.length + 1,
+          }
+        
+        ];
       }
     })
   }
