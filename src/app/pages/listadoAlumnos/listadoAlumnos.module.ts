@@ -1,6 +1,6 @@
 import { NgModule, Pipe } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TablaComponent } from './tabla.component';
+import { ListadoAlumnosComponent } from './listadoAlumnos.component';
 import { MatTableModule } from '@angular/material/table';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { DirectivesModule } from 'src/app/shared/directives/directives.module';
@@ -8,7 +8,7 @@ import { DirectivesModule } from 'src/app/shared/directives/directives.module';
 
 @NgModule({
   declarations: [
-    TablaComponent
+    ListadoAlumnosComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +17,7 @@ import { DirectivesModule } from 'src/app/shared/directives/directives.module';
     DirectivesModule
   ],
   exports: [
-    TablaComponent
+    ListadoAlumnosComponent
   ]
 })
-export class TablaModule { }
+export class ListadoAlumnosModule { }

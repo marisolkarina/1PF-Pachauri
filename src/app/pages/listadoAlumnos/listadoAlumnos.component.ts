@@ -9,11 +9,11 @@ export interface Estudiante {
 
 
 @Component({
-  selector: 'app-tabla',
-  templateUrl: './tabla.component.html',
-  styleUrls: ['./tabla.component.css']
+  selector: 'app-listadoAlumnos',
+  templateUrl: './listadoAlumnos.component.html',
+  styleUrls: ['./listadoAlumnos.component.css']
 })
-export class TablaComponent {
+export class ListadoAlumnosComponent {
   estudiantes: Estudiante[] = [
     {
       id: 1,

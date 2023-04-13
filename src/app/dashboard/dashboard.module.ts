@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { FormularioModule } from '../pages/formulario/formulario.module';
-import { TablaModule } from '../pages/tabla/tabla.module';
+import { ListadoAlumnosModule } from '../pages/listadoAlumnos/listadoAlumnos.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     FormularioModule,
-    TablaModule,
+    ListadoAlumnosModule,
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
