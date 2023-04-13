@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Pipe } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TablaComponent } from './tabla.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 
 
@@ -11,7 +12,8 @@ import {MatTableModule} from '@angular/material/table';
   ],
   imports: [
     CommonModule,
-    MatTableModule
+    MatTableModule,
+    PipesModule
   ],
   exports: [
     TablaComponent

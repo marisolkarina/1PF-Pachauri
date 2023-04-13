@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-interface Estudiante {
+export interface Estudiante {
   id: number;
   nombre: string;
   apellido: string;
@@ -35,5 +35,5 @@ export class TablaComponent {
     }
   ]
 
-  displayedColumns: string[] = ['id', 'nombre', 'apellido', 'curso']
+  displayedColumns: string[] = ['id', 'nombreCompleto', 'curso']
 }
