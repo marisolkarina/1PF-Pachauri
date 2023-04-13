@@ -32,13 +32,15 @@ export class FormularioComponent {
   controlGrado = new FormControl('', [Validators.required]);
   controlEmail = new FormControl('', [Validators.required, Validators.email]);
   controlPassword = new FormControl('', [Validators.required]);
+  controlAddress = new FormControl('', [Validators.required]);
 
   myForm = new FormGroup({
     name: this.controlName,
     lastname: this.controlLastname,
     grado: this.controlGrado,
     email: this.controlEmail,
-    password: this.controlPassword
+    password: this.controlPassword,
+    adress: this.controlAddress,
   });
 
   matcher = new MyErrorStateMatcher();
