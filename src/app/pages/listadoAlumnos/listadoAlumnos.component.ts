@@ -40,7 +40,7 @@ export class ListadoAlumnosComponent {
   ]
   dataSource = new MatTableDataSource(this.estudiantes);
 
-  displayedColumns: string[] = ['id', 'nombreCompleto', 'curso'];
+  displayedColumns: string[] = ['id', 'nombreCompleto', 'curso', 'opciones'];
 
   constructor(private matDialog: MatDialog) {}
 
@@ -58,5 +58,13 @@ export class ListadoAlumnosComponent {
         ];
       }
     })
+  }
+
+  eliminarABMAlumno(row: Estudiante): void {
+    const indice = this.dataSource.data.findIndex((est) => est.id === row.id);
+    if (indice >= 0) {
+      this.dataSource.data.splice(indice, 1);
+      this.dataSource._updateChangeSubscription();
+    }
   }
 }
