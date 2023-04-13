@@ -13,8 +13,8 @@ export class AbmAlumnosComponent {
   controlCurso = new FormControl('', [Validators.required]);
 
   myFormAdd = new FormGroup({
-    name: this.controlName,
-    lastname: this.controlLastname,
+    nombre: this.controlName,
+    apellido: this.controlLastname,
     curso: this.controlCurso,
   });
 
