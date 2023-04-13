@@ -21,7 +21,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    
+    
   ],
   exports: [
     DashboardComponent
