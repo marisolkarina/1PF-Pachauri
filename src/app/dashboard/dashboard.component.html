@@ -3,7 +3,8 @@
         <p>Auto-resizing sidenav</p>
         
         <img width="100" src="../../assets/user.png">
-        <p>{{ authUser?.name }}</p>
+        <p> MI CUENTA </p>
+        <p>{{ (authUserObs$ | async)?.name }}</p>
         <p>{{ authUser?.email }}</p>
 
         <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
@@ -38,8 +39,11 @@
         <!--FORMULARIO-->
         <!-- <app-formulario></app-formulario> -->
         
+        
+
         <!--OBSERVABLE-->
         <app-observables></app-observables>
+        {{ authUserObs$ | async | json }}
 
         <!--TABLA-->
         <app-listadoAlumnos></app-listadoAlumnos>

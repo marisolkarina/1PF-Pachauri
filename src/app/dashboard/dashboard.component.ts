@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Usuario } from '../models';
-import { Subject, Subscription, takeUntil } from 'rxjs';
+import { Observable, Subject, Subscription, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,12 +13,16 @@ export class DashboardComponent implements OnDestroy {
 
   authUser: Usuario | null = null;
 
+  authUserObs$: Observable<Usuario>;
+
   // suscripcionAuthUser: Subscription | null = null;
   destroyed$ = new Subject<void>();
 
   constructor(
     private authService: AuthService
   ) { 
+    this.authUserObs$ = this.authService.obtenerUsuarioAutenticado();
+    
     this.authService.obtenerUsuarioAutenticado()
       .pipe(
         takeUntil(this.destroyed$)

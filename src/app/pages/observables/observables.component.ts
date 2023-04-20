@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormGroupDirective, NgForm } from '@angular/forms';
-import { Subject, from } from 'rxjs'
+import { Subject, from, interval, map } from 'rxjs'
 import { NotificationsService } from 'src/app/services/notifications.service';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { AuthService } from 'src/app/services/auth.service';
@@ -51,6 +51,8 @@ export class ObservablesComponent implements OnInit{
 
   async ngOnInit(): Promise<void> {
 
+    this.suscribirseAInterval();
+
     this.escucharLoggedIn();
 
     this.notifier.next('Se completó con éxito');
@@ -79,6 +81,14 @@ export class ObservablesComponent implements OnInit{
       })
     }, 3000);
 
+  }
+
+  suscribirseAInterval() {
+    interval(1000)
+      .pipe(
+        map((v) => v*2)
+      )
+      .subscribe((v) => console.log(v));
   }
 
   crearUsuario(): void {
