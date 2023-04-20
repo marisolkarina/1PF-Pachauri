@@ -10,11 +10,12 @@ import { Usuario } from '../models';
 export class DashboardComponent {
   showFiller = false;
 
-  authUsr: Usuario | null = null;
+  authUser: Usuario | null = null;
 
   constructor(
     private authService: AuthService
-  ) {
-
+  ) { 
+    this.authService.obtenerUsuarioAutenticado()
+      .subscribe((usuario) => this.authUser = usuario);
   }
 }

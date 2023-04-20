@@ -1,6 +1,8 @@
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
         <p>Auto-resizing sidenav</p>
+        <img width="100" src="../../assets/user.png">
+        <p>{{ authUser?.email }}</p>
         <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
         <button (click)="showFiller = !showFiller" mat-raised-button>
             Toggle extra text
@@ -32,9 +34,14 @@
     <main class="m-2">
         <!--FORMULARIO-->
         <app-formulario></app-formulario>
-      
+        
+        <!--OBSERVABLE-->
+        <app-observables></app-observables>
+        
         <!--TABLA-->
         <app-listadoAlumnos></app-listadoAlumnos>
+
+        
     </main>
 </mat-drawer-container>
 
