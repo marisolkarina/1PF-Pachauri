@@ -13,4 +13,8 @@ export class AuthService {
   obtenerUsuarioAutenticado(): Observable<Usuario> {
     return this.authUser$.asObservable();
   }
+
+  login(usuario: Usuario): void {
+    this.authUser$.next(usuario);
+  }
 }
