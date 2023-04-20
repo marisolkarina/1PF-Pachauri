@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Usuario } from '../models';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   showFiller = false;
+
+  authUsr: Usuario | null = null;
+
+  constructor(
+    private authService: AuthService
+  ) {
+
+  }
 }
