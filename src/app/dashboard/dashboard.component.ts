@@ -14,6 +14,7 @@ export class DashboardComponent implements OnDestroy {
 
   apareceLogin = true;
   apareceRegister = true;
+  apareceJson = true;
 
   authUser: Usuario | null = null;
 
@@ -44,12 +45,16 @@ export class DashboardComponent implements OnDestroy {
   goLogin(): void {
     this.router.navigate(['dashboard','login']);
     this.apareceLogin = false;
+    this.apareceJson = false;
   }
   goRegister(): void {
     this.router.navigate(['dashboard','register']);
     this.apareceRegister = false;
+    this.apareceJson = true;
   }
   cerrarSesion(): void {
     this.router.navigate(['dashboard']);
+    this.apareceJson = true;
   }
+
 }

@@ -10,12 +10,12 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class AbmAlumnosComponent {
   controlName = new FormControl('',[Validators.required]);
   controlLastname = new FormControl('', [Validators.required]);
-  controlCurso = new FormControl('', [Validators.required]);
+  controlFecha = new FormControl('', [Validators.required]);
 
   myFormAdd = new FormGroup({
     nombre: this.controlName,
     apellido: this.controlLastname,
-    curso: this.controlCurso,
+    fecha_registro: this.controlFecha,
   });
 
   constructor(private dialogRef: MatDialogRef<AbmAlumnosComponent>) {}

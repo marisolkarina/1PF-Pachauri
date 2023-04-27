@@ -55,16 +55,13 @@
 
         <!--FORMULARIO-->
         <!-- <app-formulario></app-formulario> -->
-        
-        
 
         <!--OBSERVABLE-->
         <!-- <app-observables></app-observables> -->
         <button mat-raised-button color="primary" (click)="goLogin()" *ngIf="apareceLogin">Login</button>
         <button mat-raised-button color="primary" (click)="goRegister()" *ngIf="apareceRegister">Register</button>
 
-        {{ authUserObs$ | async | json }}
-
+        <p *ngIf="!apareceJson">PIPE ASYNC DE LA CUENTA  : {{ authUserObs$ | async | json }}</p>
         <!--TABLA-->
         <!-- <app-listadoAlumnos></app-listadoAlumnos> -->
         <router-outlet></router-outlet>

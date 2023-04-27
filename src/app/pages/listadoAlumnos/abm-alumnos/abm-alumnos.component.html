@@ -29,13 +29,14 @@
         </mat-form-field>
     
         <mat-form-field appearance="fill">
-            <mat-label>Curso</mat-label>
+            <mat-label>Fecha de registro</mat-label>
             <input 
                 matInput 
-                placeholder="curso"
-                [formControl] = controlCurso
+                placeholder="fecha_registro"
+                [formControl] = controlFecha
+                type="date"
             >
-            <mat-error>Ingrese curso</mat-error>
+            <mat-error>Ingrese fecha de registro</mat-error>
         
         </mat-form-field>
         

@@ -12,19 +12,19 @@ export class AlumnosService {
       id: 1,
       nombre: 'Juana',
       apellido: 'Sosa',
-      curso: 'Aritmetica',
+      fecha_registro: new Date(),
     },
     {
       id: 2,
       nombre: 'Rosa',
       apellido: 'Lima',
-      curso: 'Historia',
+      fecha_registro: new Date(),
     },
     {
       id: 3,
       nombre: 'Lisa',
       apellido: 'Simpson',
-      curso: 'Literatura',
+      fecha_registro: new Date(),
     }
   ])
 
