@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
-import { Curso } from '../models';
+import { BehaviorSubject, Observable, map, take } from 'rxjs';
+import { CrearCursoPayload, Curso } from '../models';
 
 const CURSOS_MOCKS: Curso[] = [
   {
@@ -42,5 +42,24 @@ export class CursosService {
       .pipe(
         map((cursos) => cursos.find((c) => c.id === id))
       )
+  }
+
+  crearCurso(payload: CrearCursoPayload): Observable<Curso[]> {
+    this.cursos$
+    .pipe(
+      take(1)
+    )
+    .subscribe({
+      next: (cursos) => {
+        this.cursos$.next([
+          ...cursos,
+          {
+            id: cursos.length + 1,
+            ...payload
+          },
+        ])
+      }
+    })
+    return this.cursos$.asObservable();
   }
 }

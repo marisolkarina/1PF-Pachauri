@@ -19,7 +19,7 @@ export class CursosComponent {
 
   constructor(
     private cursosService: CursosService,
-    private matDialog: MatDialog, 
+    private dialog: MatDialog, 
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {}
@@ -33,21 +33,31 @@ export class CursosComponent {
       })
   }
 
+  // crearCurso(): void {
+  //   const dialog = this.matDialog.open(AbmCursosComponent);
+  //   dialog.afterClosed().subscribe((valor) => {
+  //     if (valor) {
+        
+  //       this.dataSource.data = [
+  //         ...this.dataSource.data, 
+  //         {
+  //           ...valor,
+  //           id: this.dataSource.data.length + 1,
+  //         }
+        
+  //       ];console.log(this.dataSource.data)
+  //     }
+  //   })
+  // }
+
   crearCurso(): void {
-    const dialog = this.matDialog.open(AbmCursosComponent);
-    dialog.afterClosed().subscribe((valor) => {
-      if (valor) {
-        
-        this.dataSource.data = [
-          ...this.dataSource.data, 
-          {
-            ...valor,
-            id: this.dataSource.data.length + 1,
-          }
-        
-        ];console.log(this.dataSource.data)
-      }
-    })
+    const dialog = this.dialog.open(AbmCursosComponent);
+    dialog.afterClosed()
+      .subscribe((formValue) => {
+        if (formValue) {
+          this.cursosService.crearCurso(formValue)
+        }
+      });
   }
 
   verDetalle(cursoId: Curso): void {
