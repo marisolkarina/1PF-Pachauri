@@ -9,13 +9,17 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { AbmCursosComponent } from './abm-cursos/abm-cursos.component';
+import { DirectivesModule } from 'src/app/shared/directives/directives.module';
+import { CursoDetalleComponent } from './curso-detalle/curso-detalle.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 
 @NgModule({
   declarations: [
     CursosComponent,
-    AbmCursosComponent
+    AbmCursosComponent,
+    CursoDetalleComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +29,8 @@ import { AbmCursosComponent } from './abm-cursos/abm-cursos.component';
     MatDialogModule,
     ReactiveFormsModule,
     MatInputModule,
+    DirectivesModule,
+    MatCardModule
     
   ],
   exports: [

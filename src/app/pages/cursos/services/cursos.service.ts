@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Curso } from '../models';
 
 const CURSOS_MOCKS: Curso[] = [
@@ -28,14 +28,19 @@ const CURSOS_MOCKS: Curso[] = [
   providedIn: 'root'
 })
 export class CursosService {
-  private cursos$ = new BehaviorSubject<Curso[]>([
-
-  ])
+  private cursos$ = new BehaviorSubject<Curso[]>([])
   
   constructor() { }
 
   obtenerCursos(): Observable<Curso[]> {
     this.cursos$.next(CURSOS_MOCKS);
     return this.cursos$.asObservable();
+  }
+
+  obtenerCursoPorId(id: number): Observable<Curso | undefined> {
+    return this.cursos$.asObservable()
+      .pipe(
+        map((cursos) => cursos.find((c) => c.id === id))
+      )
   }
 }

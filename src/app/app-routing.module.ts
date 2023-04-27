@@ -6,6 +6,7 @@ import { ObservablesComponent } from './pages/observables/observables.component'
 import { FormularioComponent } from './pages/formulario/formulario.component';
 import { AlumnoDetalleComponent } from './pages/listadoAlumnos/alumno-detalle/alumno-detalle.component';
 import { CursosComponent } from './pages/cursos/cursos.component';
+import { CursoDetalleComponent } from './pages/cursos/curso-detalle/curso-detalle.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
         path: 'cursos',
         component: CursosComponent
       },
+      {
+        path: 'cursos/:id',
+        component: CursoDetalleComponent
+      }
     ] 
   },
   {

@@ -12,13 +12,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlumnoDetalleComponent } from './alumno-detalle/alumno-detalle.component';
 import { MatCardModule } from '@angular/material/card';
+import { CursoDetalleComponent } from '../cursos/curso-detalle/curso-detalle.component';
 
 
 @NgModule({
   declarations: [
     ListadoAlumnosComponent,
     AbmAlumnosComponent,
-    AlumnoDetalleComponent
+    AlumnoDetalleComponent,
   ],
   imports: [
     CommonModule,
@@ -33,7 +34,7 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
   ],
   exports: [
-    ListadoAlumnosComponent
+    
   ]
 })
 export class ListadoAlumnosModule { }

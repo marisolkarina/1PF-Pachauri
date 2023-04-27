@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { CursosService } from './services/cursos.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Curso } from './models';
+import { MatDialog } from '@angular/material/dialog';
+import { AbmCursosComponent } from './abm-cursos/abm-cursos.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cursos',
@@ -15,7 +18,10 @@ export class CursosComponent {
   displayedColumns = ['id', 'curso', 'fecha_inicio', 'fecha_fin', 'opciones']
 
   constructor(
-    private cursosService: CursosService
+    private cursosService: CursosService,
+    private matDialog: MatDialog, 
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) {}
   
   ngOnInit(): void {
@@ -28,11 +34,26 @@ export class CursosComponent {
   }
 
   crearCurso(): void {
-
+    const dialog = this.matDialog.open(AbmCursosComponent);
+    dialog.afterClosed().subscribe((valor) => {
+      if (valor) {
+        
+        this.dataSource.data = [
+          ...this.dataSource.data, 
+          {
+            ...valor,
+            id: this.dataSource.data.length + 1,
+          }
+        
+        ];console.log(this.dataSource.data)
+      }
+    })
   }
 
-  verDetalle(cursoID: Curso): void {
-
+  verDetalle(cursoId: Curso): void {
+    this.router.navigate([cursoId], {
+      relativeTo: this.activatedRoute,
+    });
   }
 
   eliminarABMCurso(curso: Curso):void {
