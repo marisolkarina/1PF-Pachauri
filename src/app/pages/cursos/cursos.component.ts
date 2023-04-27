@@ -33,23 +33,6 @@ export class CursosComponent {
       })
   }
 
-  // crearCurso(): void {
-  //   const dialog = this.matDialog.open(AbmCursosComponent);
-  //   dialog.afterClosed().subscribe((valor) => {
-  //     if (valor) {
-        
-  //       this.dataSource.data = [
-  //         ...this.dataSource.data, 
-  //         {
-  //           ...valor,
-  //           id: this.dataSource.data.length + 1,
-  //         }
-        
-  //       ];console.log(this.dataSource.data)
-  //     }
-  //   })
-  // }
-
   crearCurso(): void {
     const dialog = this.dialog.open(AbmCursosComponent);
     dialog.afterClosed()
@@ -67,6 +50,8 @@ export class CursosComponent {
   }
 
   eliminarABMCurso(curso: Curso):void {
-
+    if (confirm('Está seguro?')) {
+      this.cursosService.eliminarCurso(curso.id);
+    }
   }
 }

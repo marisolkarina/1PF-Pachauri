@@ -34,7 +34,7 @@ import { CursoDetalleComponent } from '../cursos/curso-detalle/curso-detalle.com
     MatCardModule
   ],
   exports: [
-    
+    ListadoAlumnosComponent
   ]
 })
 export class ListadoAlumnosModule { }

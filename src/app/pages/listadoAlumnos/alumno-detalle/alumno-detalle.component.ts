@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlumnosService } from '../services/alumnos.service';
-import { Alumno } from '../listadoAlumnos.component';
+import { Alumno } from '../models';
+// import { Alumno } from '../listadoAlumnos.component';
+
 
 @Component({
   selector: 'app-alumno-detalle',

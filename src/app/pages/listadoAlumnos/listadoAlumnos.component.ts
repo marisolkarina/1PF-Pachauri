@@ -4,15 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlumnosService } from './services/alumnos.service';
-
-
-export interface Alumno {
-  id: number;
-  nombre: string;
-  apellido: string;
-  fecha_registro: Date;
-}
-
+import { Alumno } from './models';
 
 @Component({
   selector: 'app-listadoAlumnos',
@@ -26,16 +18,22 @@ export class ListadoAlumnosComponent {
   displayedColumns: string[] = ['id', 'nombreCompleto', 'fecha_registro', 'opciones'];
 
   constructor(
-    private matDialog: MatDialog, 
+    private dialog: MatDialog, 
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private alumnosService: AlumnosService
-  ) {
+  ) {}
+
+
+  ngOnInit(): void {
     this.alumnosService.obtenerAlumnos()
-      .subscribe((alumnos) => {
-        this.dataSource.data = alumnos;
-      }) 
+      .subscribe({
+        next: (alumnos) => {
+          this.dataSource.data = alumnos;
+        }
+      })
   }
+
 
   verDetalle(alumnoId:number): void {
     this.router.navigate([alumnoId], {
@@ -48,27 +46,24 @@ export class ListadoAlumnosComponent {
   }
 
   abrirABMAlumnos(): void {
-    const dialog = this.matDialog.open(AbmAlumnosComponent);
-    dialog.afterClosed().subscribe((valor) => {
-      if (valor) {
-        
-        this.dataSource.data = [
-          ...this.dataSource.data, 
-          {
-            ...valor,
-            id: this.dataSource.data.length + 1,
-          }
-        
-        ];console.log(this.dataSource.data)
-      }
-    })
+    const dialog = this.dialog.open(AbmAlumnosComponent);
+    dialog.afterClosed()
+      .subscribe((formValue) => {
+        if (formValue) {
+          this.alumnosService.crearAlumno(formValue)
+        }
+      });
   }
 
   eliminarABMAlumno(row: Alumno): void {
-    const indice = this.dataSource.data.findIndex((est) => est.id === row.id);
-    if (indice >= 0) {
-      this.dataSource.data.splice(indice, 1);
-      this.dataSource._updateChangeSubscription();
+    if(confirm('Está seguro?')) {
+      const indice = this.dataSource.data.findIndex((est) => est.id === row.id);
+      if (indice >= 0) {
+        this.dataSource.data.splice(indice, 1);
+        this.dataSource._updateChangeSubscription();
+      }
     }
+    
+    
   }
 }

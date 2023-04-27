@@ -62,4 +62,22 @@ export class CursosService {
     })
     return this.cursos$.asObservable();
   }
+
+  eliminarCurso(cursoId: number): Observable<Curso[]> {
+    this.cursos$
+    .pipe(
+      take(1)
+    )
+    .subscribe({
+      next: (cursos) => {
+        const cursosActualizados = cursos.filter((curso) => curso.id !== cursoId)
+        this.cursos$.next(cursosActualizados);
+      },
+      complete: () => {},
+      error: () => {}
+    });
+
+    return this.cursos$.asObservable();
+  }
+
 }

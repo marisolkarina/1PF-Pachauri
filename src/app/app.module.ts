@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { CursosModule } from './pages/cursos/cursos.module';
+import { ListadoAlumnosModule } from './pages/listadoAlumnos/listadoAlumnos.module';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { CursosModule } from './pages/cursos/cursos.module';
     BrowserAnimationsModule,
     MatDialogModule,
     AppRoutingModule,
-    CursosModule
+    CursosModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

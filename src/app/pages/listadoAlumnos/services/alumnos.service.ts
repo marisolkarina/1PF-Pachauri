@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Alumno } from '../listadoAlumnos.component';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map, take } from 'rxjs';
+import { Alumno, CrearAlumnoPayload } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,25 @@ export class AlumnosService {
   constructor() { }
 
   obtenerAlumnos(): Observable<Alumno[]> {
+    return this.alumnos$.asObservable();
+  }
+
+  crearAlumno(payload: CrearAlumnoPayload): Observable<Alumno[]> {
+    this.alumnos$
+    .pipe(
+      take(1)
+    )
+    .subscribe({
+      next: (alumnos) => {
+        this.alumnos$.next([
+          ...alumnos,
+          {
+            id: alumnos.length + 1,
+            ...payload
+          },
+        ])
+      }
+    })
     return this.alumnos$.asObservable();
   }
 
