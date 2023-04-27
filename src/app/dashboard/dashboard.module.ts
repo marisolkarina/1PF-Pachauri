@@ -8,6 +8,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ObservablesModule } from '../pages/observables/observables.module';
+import { RouterModule } from '@angular/router';
+import { MatListModule } from '@angular/material/list';
 
 
 
@@ -23,7 +25,9 @@ import { ObservablesModule } from '../pages/observables/observables.module';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    ObservablesModule
+    ObservablesModule,
+    RouterModule,
+    MatListModule
     
   ],
   exports: [

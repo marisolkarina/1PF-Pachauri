@@ -15,7 +15,9 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 interface Usuario {
   id: number,
-  nombre: string
+  name: string,
+  email: string,
+  password: string
 }
 
 @Component({
@@ -24,7 +26,6 @@ interface Usuario {
   styleUrls: ['./observables.component.css']
 })
 export class ObservablesComponent implements OnInit{
-
   controlName = new FormControl('',[Validators.required]);
   controlEmail = new FormControl('', [Validators.required, Validators.email]);
   controlPassword = new FormControl('', [Validators.required]);
@@ -60,7 +61,9 @@ export class ObservablesComponent implements OnInit{
     const obtenerUsuario = new Promise((resolve, reject) => {
       resolve({
         id:1,
-        nombre: 'Marisol'
+        name: 'marisol',
+        email: 'marisol@gmail.com',
+        password: '987'
       })
     });
 
@@ -70,14 +73,18 @@ export class ObservablesComponent implements OnInit{
     setTimeout(() => {
       this.isLoggedIn.next({
         id: 5,
-        nombre: 'Karina'
+        name: 'karina',
+        email: 'karina@gmail.com',
+        password: '123'
       })
     }, 1000);
 
     setTimeout(() => {
       this.isLoggedIn.next({
         id: 8,
-        nombre: 'Lucía'
+        name: 'lucia',
+        email: 'lucia@gmail.com',
+        password: '321'
       })
     }, 3000);
 
@@ -86,14 +93,14 @@ export class ObservablesComponent implements OnInit{
   suscribirseAInterval() {
     interval(1000)
       .pipe(
-        map((v) => v*2)
+       // map((v) => v*2)
       )
-      .subscribe((v) => console.log(v));
+     // .subscribe((v) => console.log(v));
   }
 
-  crearUsuario(): void {
-    this.notificationsService.mostrarMensaje("Usuario creado correctamente");
-  }
+  // crearUsuario(): void {
+  //   this.notificationsService.mostrarMensaje("Usuario creado correctamente");
+  // }
 
   escucharLoggedIn(): void {
     this.isLoggedIn.subscribe((valor) => console.log(valor));

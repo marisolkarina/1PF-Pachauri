@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { DirectivesModule } from 'src/app/shared/directives/directives.module';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DirectivesModule } from 'src/app/shared/directives/directives.module';
     MatInputModule,
     MatIconModule,
     MatSelectModule,
-    DirectivesModule
+    DirectivesModule,
+    MatButtonModule
   ],
   exports: [
     FormularioComponent

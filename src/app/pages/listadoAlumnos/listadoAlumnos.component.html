@@ -30,7 +30,9 @@
   <ng-container matColumnDef="opciones">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Opciones </th>
     <mat-cell *matCellDef="let alumno">
-
+      <button mat-icon-button color="primary" (click)="verDetalle(alumno.id)">
+        <mat-icon>visibility</mat-icon>
+      </button>
       <button mat-icon-button color="warn" (click)="eliminarABMAlumno(alumno)">
         <mat-icon>delete</mat-icon>
       </button>

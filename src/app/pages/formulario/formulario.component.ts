@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -33,7 +34,21 @@ export class FormularioComponent {
     adress: this.controlAddress,
   });
 
+  constructor(
+    private notificationsService: NotificationsService,
+  ) {}
+
   matcher = new MyErrorStateMatcher();
 
   hide = true;
+
+  crearUsuario(): void {
+    if(this.myForm.valid) {
+      this.notificationsService.mostrarMensaje("Usuario creado correctamente");
+    } else {
+      this.notificationsService.mostrarMensaje("Registre datos válidos");
+    }
+  }
+
+
 }

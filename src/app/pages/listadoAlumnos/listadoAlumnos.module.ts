@@ -10,12 +10,15 @@ import { MatInputModule } from '@angular/material/input';
 import { AbmAlumnosComponent } from './abm-alumnos/abm-alumnos.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AlumnoDetalleComponent } from './alumno-detalle/alumno-detalle.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
   declarations: [
     ListadoAlumnosComponent,
-    AbmAlumnosComponent
+    AbmAlumnosComponent,
+    AlumnoDetalleComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatButtonModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule
   ],
   exports: [
     ListadoAlumnosComponent

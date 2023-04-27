@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { AbmAlumnosComponent } from './abm-alumnos/abm-alumnos.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlumnosService } from './services/alumnos.service';
 
 
-export interface Estudiante {
+export interface Alumno {
   id: number;
   nombre: string;
   apellido: string;
@@ -18,31 +20,32 @@ export interface Estudiante {
   styleUrls: ['./listadoAlumnos.component.css']
 })
 export class ListadoAlumnosComponent {
-  estudiantes: Estudiante[] = [
-    {
-      id: 1,
-      nombre: 'Juan',
-      apellido: 'Sosa',
-      curso: 'Aritmetica',
-    },
-    {
-      id: 2,
-      nombre: 'Rosa',
-      apellido: 'Lima',
-      curso: 'Historia',
-    },
-    {
-      id: 3,
-      nombre: 'Lisa',
-      apellido: 'Simpson',
-      curso: 'Literatura',
-    }
-  ]
-  dataSource = new MatTableDataSource(this.estudiantes);
+
+  dataSource = new MatTableDataSource<Alumno>();
 
   displayedColumns: string[] = ['id', 'nombreCompleto', 'curso', 'opciones'];
 
-  constructor(private matDialog: MatDialog) {}
+  constructor(
+    private matDialog: MatDialog, 
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private alumnosService: AlumnosService
+  ) {
+    this.alumnosService.obtenerAlumnos()
+      .subscribe((alumnos) => {
+        this.dataSource.data = alumnos;
+      }) 
+  }
+
+  verDetalle(alumnoId:number): void {
+    this.router.navigate([alumnoId], {
+      relativeTo: this.activatedRoute,
+      queryParams: {
+        page: 1,
+        limit: 50
+      }
+    });
+  }
 
   abrirABMAlumnos(): void {
     const dialog = this.matDialog.open(AbmAlumnosComponent);
@@ -61,7 +64,7 @@ export class ListadoAlumnosComponent {
     })
   }
 
-  eliminarABMAlumno(row: Estudiante): void {
+  eliminarABMAlumno(row: Alumno): void {
     const indice = this.dataSource.data.findIndex((est) => est.id === row.id);
     if (indice >= 0) {
       this.dataSource.data.splice(indice, 1);

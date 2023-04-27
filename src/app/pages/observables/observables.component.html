@@ -1,4 +1,5 @@
-<button mat-flat-button color="primary" (click)="crearUsuario()">Crear usuario</button>
+
+<p appFontSize>Login</p>
 
 <form [formGroup]="myForm" (ngSubmit)="login()">
 
@@ -9,10 +10,11 @@
             placeholder="nombre"
             [formControl] = controlName 
             #input 
-            maxlength="25"
+            maxlength="15"
         >
-        <mat-hint >{{input.value.length}}/25</mat-hint>
-        <mat-error>Ingrese nombres completos</mat-error>
+        <mat-hint >{{input.value.length}}/15</mat-hint>
+        <mat-error>Ingrese nombres</mat-error>
+
     </mat-form-field>
 
     <mat-form-field appearance="fill">
