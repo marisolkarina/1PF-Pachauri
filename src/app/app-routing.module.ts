@@ -2,10 +2,10 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListadoAlumnosComponent } from './pages/listadoAlumnos/listadoAlumnos.component';
-import { CardsComponent } from './pages/cards/cards.component';
 import { ObservablesComponent } from './pages/observables/observables.component';
 import { FormularioComponent } from './pages/formulario/formulario.component';
 import { AlumnoDetalleComponent } from './pages/listadoAlumnos/alumno-detalle/alumno-detalle.component';
+import { CursosComponent } from './pages/cursos/cursos.component';
 
 const routes: Routes = [
   {
@@ -29,8 +29,8 @@ const routes: Routes = [
         component: FormularioComponent
       },
       {
-        path: 'cards',
-        component: CardsComponent
+        path: 'cursos',
+        component: CursosComponent
       },
     ] 
   },

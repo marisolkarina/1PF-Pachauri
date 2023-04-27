@@ -49,4 +49,7 @@ export class DashboardComponent implements OnDestroy {
     this.router.navigate(['dashboard','register']);
     this.apareceRegister = false;
   }
+  cerrarSesion(): void {
+    this.router.navigate(['dashboard']);
+  }
 }

@@ -11,9 +11,9 @@ const mylinks: NavItem[] = [
         icon: 'person'
     },
     {
-        path: 'cards',
-        title: 'Tarjetas',
-        icon: 'badge'
+        path: 'cursos',
+        title: 'Cursos',
+        icon: 'school'
     },
 
 ]
