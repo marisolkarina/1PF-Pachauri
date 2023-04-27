@@ -6,6 +6,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
+import { CursosModule } from './pages/cursos/cursos.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
     DashboardModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CursosModule
   ],
   providers: [],
   bootstrap: [AppComponent]
