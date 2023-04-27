@@ -6,6 +6,11 @@ interface NavItem{
 
 const mylinks: NavItem[] = [
     {
+        path: 'inscripciones',
+        title: 'Inscripciones',
+        icon: 'arrow_forward'
+    },
+    {
         path: 'alumnos',
         title: 'Alumnos',
         icon: 'person'
@@ -14,7 +19,7 @@ const mylinks: NavItem[] = [
         path: 'cursos',
         title: 'Cursos',
         icon: 'school'
-    },
+    }
 
 ]
 

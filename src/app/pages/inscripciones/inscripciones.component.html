@@ -1,0 +1,29 @@
+<p appFontSize>Inscripciones</p>
+
+
+<table mat-table [dataSource]="dataSource">
+    <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let inscripcion"> {{inscripcion.id}} </td>
+  </ng-container>
+
+  <!--Nombre completo Column-->
+  <ng-container matColumnDef="nombreCompleto">
+    <th mat-header-cell *matHeaderCellDef> Nombre completo </th>
+    <td mat-cell *matCellDef="let inscripcion"> 
+        {{inscripcion.nombreCompleto }}
+    </td>
+  </ng-container>
+
+  <!-- Curso Column -->
+  <ng-container matColumnDef="cursoInscrito">
+    <th mat-header-cell *matHeaderCellDef> Curso inscrito </th>
+    <td mat-cell *matCellDef="let inscripcion"> 
+        {{inscripcion.cursoInscrito }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

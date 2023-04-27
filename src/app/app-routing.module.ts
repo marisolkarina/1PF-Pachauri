@@ -7,12 +7,17 @@ import { FormularioComponent } from './pages/formulario/formulario.component';
 import { AlumnoDetalleComponent } from './pages/listadoAlumnos/alumno-detalle/alumno-detalle.component';
 import { CursosComponent } from './pages/cursos/cursos.component';
 import { CursoDetalleComponent } from './pages/cursos/curso-detalle/curso-detalle.component';
+import { InscripcionesComponent } from './pages/inscripciones/inscripciones.component';
 
 const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
     children: [
+      {
+        path: 'inscripciones',
+        component: InscripcionesComponent
+      },
       {
         path: 'alumnos',
         component: ListadoAlumnosComponent

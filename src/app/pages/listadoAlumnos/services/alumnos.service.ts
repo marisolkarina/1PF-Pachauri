@@ -2,35 +2,38 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map, take } from 'rxjs';
 import { Alumno, CrearAlumnoPayload } from '../models';
 
+const ALUMNOS_MOCKS: Alumno[] = [
+  {
+    id: 1,
+    nombre: 'Juana',
+    apellido: 'Sosa',
+    fecha_registro: new Date(),
+  },
+  {
+    id: 2,
+    nombre: 'Rosa',
+    apellido: 'Lima',
+    fecha_registro: new Date(),
+  },
+  {
+    id: 3,
+    nombre: 'Lisa',
+    apellido: 'Simpson',
+    fecha_registro: new Date(),
+  }
+]
+
 @Injectable({
   providedIn: 'root'
 })
 export class AlumnosService {
 
-  private alumnos$ = new BehaviorSubject<Alumno[]>([
-    {
-      id: 1,
-      nombre: 'Juana',
-      apellido: 'Sosa',
-      fecha_registro: new Date(),
-    },
-    {
-      id: 2,
-      nombre: 'Rosa',
-      apellido: 'Lima',
-      fecha_registro: new Date(),
-    },
-    {
-      id: 3,
-      nombre: 'Lisa',
-      apellido: 'Simpson',
-      fecha_registro: new Date(),
-    }
-  ])
+  private alumnos$ = new BehaviorSubject<Alumno[]>([])
 
   constructor() { }
 
   obtenerAlumnos(): Observable<Alumno[]> {
+    this.alumnos$.next(ALUMNOS_MOCKS);
     return this.alumnos$.asObservable();
   }
 
