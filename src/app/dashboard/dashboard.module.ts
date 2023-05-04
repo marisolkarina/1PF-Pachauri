@@ -10,6 +10,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { ObservablesModule } from '../pages/observables/observables.module';
 import { RouterModule } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
+import { CursoDetalleComponent } from '../pages/cursos/curso-detalle/curso-detalle.component';
+import { CursosComponent } from '../pages/cursos/cursos.component';
+import { FormularioComponent } from '../pages/formulario/formulario.component';
+import { InscripcionesComponent } from '../pages/inscripciones/inscripciones.component';
+import { ObservablesComponent } from '../pages/observables/observables.component';
+import { AlumnoDetalleComponent } from '../pages/listadoAlumnos/alumno-detalle/alumno-detalle.component';
+import { ListadoAlumnosComponent } from '../pages/listadoAlumnos/listadoAlumnos.component';
 
 
 
@@ -27,7 +34,48 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     ObservablesModule,
     RouterModule,
-    MatListModule
+    MatListModule,
+    RouterModule.forChild([
+      {
+        path: 'inscripciones',
+        component: InscripcionesComponent
+      },
+      {
+        path: 'alumnos',
+        // loadChildren: () => import('../pages/listadoAlumnos/listadoAlumnos.module').then((m) => m.ListadoAlumnosModule)
+        children: [
+          {
+            path: '',
+            component: ListadoAlumnosComponent
+          },
+          {
+            path: ':id',
+            component: AlumnoDetalleComponent
+          }
+        ]
+      },
+      {
+        path: 'login',
+        component: ObservablesComponent
+      },
+      {
+        path: 'register',
+        component: FormularioComponent
+      },
+      {
+        path: 'cursos',
+        children: [
+          {
+            path: '',
+            component: CursosComponent
+          },
+          {
+            path: ':id',
+            component: CursoDetalleComponent
+          }
+        ]
+      }
+    ])
     
   ],
   exports: [

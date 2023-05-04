@@ -12,7 +12,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlumnoDetalleComponent } from './alumno-detalle/alumno-detalle.component';
 import { MatCardModule } from '@angular/material/card';
-import { CursoDetalleComponent } from '../cursos/curso-detalle/curso-detalle.component';
+import { AlumnosRoutingModule } from './alumnos-routing.module';
 
 
 @NgModule({
@@ -31,7 +31,8 @@ import { CursoDetalleComponent } from '../cursos/curso-detalle/curso-detalle.com
     MatButtonModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    AlumnosRoutingModule
   ],
   exports: [
     ListadoAlumnosComponent
