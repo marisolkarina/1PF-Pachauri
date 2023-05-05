@@ -12,9 +12,7 @@ import { RouterModule } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
 import { CursoDetalleComponent } from '../pages/cursos/curso-detalle/curso-detalle.component';
 import { CursosComponent } from '../pages/cursos/cursos.component';
-import { FormularioComponent } from '../pages/formulario/formulario.component';
 import { InscripcionesComponent } from '../pages/inscripciones/inscripciones.component';
-import { ObservablesComponent } from '../pages/observables/observables.component';
 import { AlumnoDetalleComponent } from '../pages/listadoAlumnos/alumno-detalle/alumno-detalle.component';
 import { ListadoAlumnosComponent } from '../pages/listadoAlumnos/listadoAlumnos.component';
 
@@ -53,14 +51,6 @@ import { ListadoAlumnosComponent } from '../pages/listadoAlumnos/listadoAlumnos.
             component: AlumnoDetalleComponent
           }
         ]
-      },
-      {
-        path: 'login',
-        component: ObservablesComponent
-      },
-      {
-        path: 'register',
-        component: FormularioComponent
       },
       {
         path: 'cursos',

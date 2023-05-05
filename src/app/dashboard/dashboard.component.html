@@ -5,8 +5,9 @@
         
         <img width="100" src="../../assets/user.png">
         <p> MI CUENTA </p>
-        <p>{{ (authUserObs$ | async)?.name }}</p>
-        <p>{{ authUser?.email }}</p>
+        <p>{{ (authUserObs$ | async)?.nombre }}</p>
+        <p>{{ (authUserObs$ | async)?.email }}</p>
+        <!-- <p>{{ authUser?.email }}</p> -->
 
         <mat-nav-list>
             <a 
@@ -58,10 +59,10 @@
 
         <!--OBSERVABLE-->
         <!-- <app-observables></app-observables> -->
-        <button mat-raised-button color="primary" (click)="goLogin()" *ngIf="apareceLogin">Login</button>
-        <button mat-raised-button color="primary" (click)="goRegister()" *ngIf="apareceRegister">Register</button>
+        <!-- <button mat-raised-button color="primary" (click)="goLogin()" *ngIf="apareceLogin">Login</button>
+        <button mat-raised-button color="primary" (click)="goRegister()" *ngIf="apareceRegister">Register</button> -->
 
-        <p *ngIf="!apareceJson">PIPE ASYNC DE LA CUENTA  : {{ authUserObs$ | async | json }}</p>
+        <!-- <p *ngIf="!apareceJson">PIPE ASYNC DE LA CUENTA  : {{ authUserObs$ | async | json }}</p> -->
         <!--TABLA-->
         <!-- <app-listadoAlumnos></app-listadoAlumnos> -->
         <router-outlet></router-outlet>

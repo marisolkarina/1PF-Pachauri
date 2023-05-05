@@ -12,13 +12,13 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnDestroy {
 
-  apareceLogin = true;
-  apareceRegister = true;
-  apareceJson = true;
+  // apareceLogin = true;
+  // apareceRegister = true;
+  // apareceJson = true;
 
-  authUser: Usuario | null = null;
+  // authUser: Usuario | null = null;
 
-  authUserObs$: Observable<Usuario>;
+  authUserObs$: Observable<Usuario | null>;
 
   links = mylinks;
 
@@ -30,31 +30,32 @@ export class DashboardComponent implements OnDestroy {
   ) { 
     this.authUserObs$ = this.authService.obtenerUsuarioAutenticado();
     
-    this.authService.obtenerUsuarioAutenticado()
-      .pipe(
-        takeUntil(this.destroyed$)
-      )
-      .subscribe((usuario) => this.authUser = usuario);
+    // this.authService.obtenerUsuarioAutenticado()
+    //   .pipe(
+    //     takeUntil(this.destroyed$)
+    //   )
+    //   .subscribe((usuario) => this.authUser = usuario);
   }
 
   ngOnDestroy(): void {
     // this.suscripcionAuthUser?.unsubscribe();
     this.destroyed$.next();
+    this.destroyed$.complete();
   }
 
-  goLogin(): void {
-    this.router.navigate(['dashboard','login']);
-    this.apareceLogin = false;
-    this.apareceJson = false;
-  }
-  goRegister(): void {
-    this.router.navigate(['dashboard','register']);
-    this.apareceRegister = false;
-    this.apareceJson = true;
-  }
+  // goLogin(): void {
+  //   this.router.navigate(['dashboard','login']);
+  //   this.apareceLogin = false;
+  //   this.apareceJson = false;
+  // }
+  // goRegister(): void {
+  //   this.router.navigate(['dashboard','register']);
+  //   this.apareceRegister = false;
+  //   this.apareceJson = true;
+  // }
   cerrarSesion(): void {
     this.router.navigate(['dashboard']);
-    this.apareceJson = true;
+    // this.apareceJson = true;
   }
 
 }

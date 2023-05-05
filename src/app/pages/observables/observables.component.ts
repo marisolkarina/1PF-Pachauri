@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators, FormGroupDirective, NgForm } from '
 import { Subject, from, interval, map } from 'rxjs'
 import { NotificationsService } from 'src/app/services/notifications.service';
 import {ErrorStateMatcher} from '@angular/material/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService, LoginFormValue } from 'src/app/services/auth.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -109,13 +109,14 @@ export class ObservablesComponent implements OnInit{
 
   login(): void {
     if(this.myForm.valid) {
-      console.log(this.myForm.value);
-      this.authService.login({
-        ...(this.myForm.value as any),
-        id: 50
-      })
+      
+      // this.authService.login({
+      //   ...(this.myForm.value as any),
+      //   id: 50
+      // })
+      this.authService.login(this.myForm.value as LoginFormValue);
     } else {
-      console.log('Formulario invalido');
+
       this.notificationsService.mostrarMensaje("Formulario inválido");
     }
     
