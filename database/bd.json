@@ -1,0 +1,22 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Marisol",
+      "apellido": "Pachauri",
+      "email": "marisol.kari.20@gmail.com",
+      "password": "123456",
+      "token": "abcdefghijk",
+      "role": "admin"
+    },
+    {
+      "nombre": "Sara",
+      "apellido": "Soliz",
+      "email": "ss@mail.com",
+      "password": "123456",
+      "token": "acbderxmjht",
+      "role": "user",
+      "id": 2
+    }
+  ]
+}
