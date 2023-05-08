@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { CursosModule } from './pages/cursos/cursos.module';
 import { InscripcionesModule } from './pages/inscripciones/inscripciones.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -16,12 +17,13 @@ import { InscripcionesModule } from './pages/inscripciones/inscripciones.module'
   ],
   imports: [
     BrowserModule,
-    DashboardModule,
+    // DashboardModule,
     BrowserAnimationsModule,
     MatDialogModule,
     AppRoutingModule,
     CursosModule,
-    InscripcionesModule
+    InscripcionesModule,
+    HttpClientModule
     
   ],
   providers: [],
