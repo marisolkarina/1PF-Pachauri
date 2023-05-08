@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Usuario } from '../models';
-import { Observable, Subject, Subscription, takeUntil } from 'rxjs';
+import { Observable, Subject} from 'rxjs';
 import mylinks from './nav-items';
 import { Router } from '@angular/router';
 
@@ -54,8 +54,9 @@ export class DashboardComponent implements OnDestroy {
   //   this.apareceJson = true;
   // }
   cerrarSesion(): void {
-    this.router.navigate(['dashboard']);
+    // this.router.navigate(['dashboard']);
     // this.apareceJson = true;
+    this.authService.logout();
   }
 
 }
