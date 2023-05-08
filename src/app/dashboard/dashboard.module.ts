@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { FormularioModule } from '../pages/formulario/formulario.module';
-import { ListadoAlumnosModule } from '../pages/listadoAlumnos/listadoAlumnos.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,7 +24,6 @@ import { ListadoAlumnosComponent } from '../pages/listadoAlumnos/listadoAlumnos.
   imports: [
     CommonModule,
     FormularioModule,
-    ListadoAlumnosModule,
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
@@ -40,30 +38,31 @@ import { ListadoAlumnosComponent } from '../pages/listadoAlumnos/listadoAlumnos.
       },
       {
         path: 'alumnos',
-        // loadChildren: () => import('../pages/listadoAlumnos/listadoAlumnos.module').then((m) => m.ListadoAlumnosModule)
-        children: [
-          {
-            path: '',
-            component: ListadoAlumnosComponent
-          },
-          {
-            path: ':id',
-            component: AlumnoDetalleComponent
-          }
-        ]
+        loadChildren: () => import('../pages/listadoAlumnos/listadoAlumnos.module').then((m) => m.ListadoAlumnosModule)
+        // children: [
+        //   {
+        //     path: '',
+        //     component: ListadoAlumnosComponent
+        //   },
+        //   {
+        //     path: ':id',
+        //     component: AlumnoDetalleComponent
+        //   }
+        // ]
       },
       {
         path: 'cursos',
-        children: [
-          {
-            path: '',
-            component: CursosComponent
-          },
-          {
-            path: ':id',
-            component: CursoDetalleComponent
-          }
-        ]
+        loadChildren: () => import('../pages/cursos/cursos.module').then((m) => m.CursosModule)
+        // children: [
+        //   {
+        //     path: '',
+        //     component: CursosComponent
+        //   },
+        //   {
+        //     path: ':id',
+        //     component: CursoDetalleComponent
+        //   }
+        // ]
       }
     ])
     

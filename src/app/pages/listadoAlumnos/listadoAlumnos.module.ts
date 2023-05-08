@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AlumnoDetalleComponent } from './alumno-detalle/alumno-detalle.component';
 import { MatCardModule } from '@angular/material/card';
 import { AlumnosRoutingModule } from './alumnos-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -32,7 +33,17 @@ import { AlumnosRoutingModule } from './alumnos-routing.module';
     MatDialogModule,
     ReactiveFormsModule,
     MatCardModule,
-    AlumnosRoutingModule
+    AlumnosRoutingModule,
+    RouterModule.forChild([
+      {
+        path:'',
+        component: ListadoAlumnosComponent
+      },
+      {
+        path: ':id',
+        component: AlumnoDetalleComponent
+      }
+    ])
   ],
   exports: [
     ListadoAlumnosComponent

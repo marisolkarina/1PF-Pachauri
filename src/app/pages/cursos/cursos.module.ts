@@ -12,6 +12,7 @@ import { AbmCursosComponent } from './abm-cursos/abm-cursos.component';
 import { DirectivesModule } from 'src/app/shared/directives/directives.module';
 import { CursoDetalleComponent } from './curso-detalle/curso-detalle.component';
 import { MatCardModule } from '@angular/material/card';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -30,7 +31,17 @@ import { MatCardModule } from '@angular/material/card';
     ReactiveFormsModule,
     MatInputModule,
     DirectivesModule,
-    MatCardModule
+    MatCardModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: CursosComponent
+      },
+      {
+        path: ':id',
+        component: CursoDetalleComponent
+      }
+    ])
     
   ],
   exports: [
