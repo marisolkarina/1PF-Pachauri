@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map } from 'rxjs';
 import { Usuario } from '../models';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -56,5 +56,27 @@ export class AuthService {
         }
       }
     })
+  }
+
+  verificarToken(): Observable<boolean> {
+
+    const token = localStorage.getItem('token');
+
+    return this.httpClient.get<Usuario[]>(`${environment.apiBaseUrl}/usuarios?token=${token}`)
+    .pipe(
+      map((usuarios) => {
+        const usuarioAutenticado = usuarios[0];
+        if(usuarioAutenticado) {
+          localStorage.setItem('token', usuarioAutenticado.token)
+          this.authUser$.next(usuarioAutenticado);
+        }
+        return !!usuarioAutenticado;
+      })
+    )
+
+    // if (storageValor) {
+    //   const usuario = JSON.parse(storageValor);
+    //   this.authUser$.next(usuario);
+    // }
   }
 }
