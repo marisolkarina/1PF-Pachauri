@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map, take } from 'rxjs';
 import { CrearCursoPayload, Curso } from '../models';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/envoronments';
 
-const CURSOS_MOCKS: Curso[] = [
-  {
-    id: 1,
-    nombre: 'Geometría Analítica',
-    fecha_inicio: new Date(),
-    fecha_fin: new Date()
-  },
-  {
-    id: 2,
-    nombre: 'Cálculo Integral',
-    fecha_inicio: new Date(),
-    fecha_fin: new Date()
-  },
-  {
-    id: 3,
-    nombre: 'Estadística y Probabilidades',
-    fecha_inicio: new Date(),
-    fecha_fin: new Date()
-  }
-]
+// const CURSOS_MOCKS: Curso[] = [
+//   {
+//     id: 1,
+//     nombre: 'Geometría Analítica',
+//     fecha_inicio: new Date(),
+//     fecha_fin: new Date()
+//   },
+//   {
+//     id: 2,
+//     nombre: 'Cálculo Integral',
+//     fecha_inicio: new Date(),
+//     fecha_fin: new Date()
+//   },
+//   {
+//     id: 3,
+//     nombre: 'Estadística y Probabilidades',
+//     fecha_inicio: new Date(),
+//     fecha_fin: new Date()
+//   }
+// ]
 
 
 @Injectable({
@@ -30,11 +32,23 @@ const CURSOS_MOCKS: Curso[] = [
 export class CursosService {
   private cursos$ = new BehaviorSubject<Curso[]>([])
   
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
-  obtenerCursos(): Observable<Curso[]> {
-    this.cursos$.next(CURSOS_MOCKS);
+  get cursos(): Observable<Curso[]> {
     return this.cursos$.asObservable();
+  }
+
+  obtenerCursos(): void {
+    // this.cursos$.next(CURSOS_MOCKS);
+    // return this.cursos$.asObservable();
+    this.httpClient.get<Curso[]>(`${environment.apiBaseUrl}/cursos`)
+      .subscribe({
+        next: (cursos) => {
+          this.cursos$.next(cursos);
+        }
+      })
   }
 
   obtenerCursoPorId(id: number): Observable<Curso | undefined> {

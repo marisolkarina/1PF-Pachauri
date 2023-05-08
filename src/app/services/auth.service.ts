@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, map } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, catchError, map } from 'rxjs';
 import { Usuario } from '../models';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/envoronments';
 
 export interface LoginFormValue {
@@ -68,7 +68,14 @@ export class AuthService {
 
     const token = localStorage.getItem('token');
 
-    return this.httpClient.get<Usuario[]>(`${environment.apiBaseUrl}/usuarios?token=${token}`)
+    return this.httpClient.get<Usuario[]>(
+      `${environment.apiBaseUrl}/usuarios?token=${token}`,
+      {
+        headers: new HttpHeaders({
+          'Authorization': token || '',
+        })
+      }
+    )
     .pipe(
       map((usuarios) => {
         const usuarioAutenticado = usuarios[0];
@@ -77,7 +84,8 @@ export class AuthService {
           this.authUser$.next(usuarioAutenticado);
         }
         return !!usuarioAutenticado;
-      })
+      }),
+
     )
 
     // if (storageValor) {

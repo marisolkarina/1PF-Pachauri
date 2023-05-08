@@ -18,5 +18,25 @@
       "role": "user",
       "id": 2
     }
+  ],
+  "cursos": [
+    {
+      "id": 1,
+      "nombre": "Geometría Analítica",
+      "fecha_inicio": "2023-04-27T01:27:59.631Z",
+      "fecha_fin": "2024-04-27T01:27:59.631Z"
+    },
+    {
+      "id": 2,
+      "nombre": "Cálculo Integral",
+      "fecha_inicio": "2023-04-27T01:27:59.631Z",
+      "fecha_fin": "2024-04-27T01:27:59.631Z"
+    },
+    {
+      "id": 3,
+      "nombre": "Estadística y Probabilidades",
+      "fecha_inicio": "2023-04-27T01:27:59.631Z",
+      "fecha_fin": "2024-04-27T01:27:59.631Z"
+    }
   ]
 }

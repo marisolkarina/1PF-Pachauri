@@ -25,12 +25,18 @@ export class CursosComponent {
   ) {}
   
   ngOnInit(): void {
-    this.cursosService.obtenerCursos()
-      .subscribe({
-        next: (cursos) => {
-          this.dataSource.data = cursos;
-        }
-      })
+    this.cursosService.cursos.subscribe({
+      next: (cursos) => {
+        this.dataSource.data = cursos;
+      },
+    })
+    // this.cursosService.obtenerCursos()
+    //   .subscribe({
+    //     next: (cursos) => {
+    //       this.dataSource.data = cursos;
+    //     }
+    //   })
+    this.cursosService.obtenerCursos();
   }
 
   crearCurso(): void {
