@@ -38,5 +38,25 @@
       "fecha_inicio": "2023-04-27T01:27:59.631Z",
       "fecha_fin": "2024-04-27T01:27:59.631Z"
     }
+  ],
+  "alumnos": [
+    {
+      "id": 1,
+      "nombre": "Juana",
+      "apellido": "Sosa",
+      "fecha_registro": "2024-03-27T01:27:59.631Z"
+    },
+    {
+      "id": 2,
+      "nombre": "Rosa",
+      "apellido": "Lima",
+      "fecha_registro": "2024-03-27T01:27:59.631Z"
+    },
+    {
+      "id": 3,
+      "nombre": "Lisa",
+      "apellido": "Simpson",
+      "fecha_registro": "2024-03-27T01:27:59.631Z"
+    }
   ]
 }

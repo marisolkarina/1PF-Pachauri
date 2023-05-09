@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbmAlumnosComponent } from './abm-alumnos/abm-alumnos.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,7 +11,7 @@ import { Alumno } from './models';
   templateUrl: './listadoAlumnos.component.html',
   styleUrls: ['./listadoAlumnos.component.css']
 })
-export class ListadoAlumnosComponent {
+export class ListadoAlumnosComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Alumno>();
 
@@ -26,14 +26,29 @@ export class ListadoAlumnosComponent {
 
 
   ngOnInit(): void {
-    this.alumnosService.obtenerAlumnos()
-      .subscribe({
-        next: (alumnos) => {
-          this.dataSource.data = alumnos;
-        }
-      })
+    this.alumnosService.alumnos.subscribe({
+      next: (alumnos) => {
+        this.dataSource.data = alumnos;
+      },
+    })
+    // this.alumnosService.obtenerAlumnos()
+    //   .subscribe({
+    //     next: (alumnos) => {
+    //       this.dataSource.data = alumnos;
+    //     }
+    //   })
+    this.alumnosService.obtenerAlumnos();
   }
 
+  crearABMAlumno(): void {
+    const dialog = this.dialog.open(AbmAlumnosComponent);
+    dialog.afterClosed()
+      .subscribe((formValue) => {
+        if (formValue) {
+          this.alumnosService.crearAlumno(formValue)
+        }
+      });
+  }
 
   verDetalle(alumnoId:number): void {
     this.router.navigate([alumnoId], {
@@ -45,25 +60,15 @@ export class ListadoAlumnosComponent {
     });
   }
 
-  abrirABMAlumnos(): void {
-    const dialog = this.dialog.open(AbmAlumnosComponent);
-    dialog.afterClosed()
-      .subscribe((formValue) => {
-        if (formValue) {
-          this.alumnosService.crearAlumno(formValue)
-        }
-      });
+  eliminarABMAlumno(alumno: Alumno): void {
+    if(confirm('Está seguro?')) {
+      // const indice = this.dataSource.data.findIndex((est) => est.id === row.id);
+      // if (indice >= 0) {
+      //   this.dataSource.data.splice(indice, 1);
+      //   this.dataSource._updateChangeSubscription();
+      // }
+      this.alumnosService.eliminarAlumno(alumno.id)
+    }    
   }
 
-  eliminarABMAlumno(row: Alumno): void {
-    if(confirm('Está seguro?')) {
-      const indice = this.dataSource.data.findIndex((est) => est.id === row.id);
-      if (indice >= 0) {
-        this.dataSource.data.splice(indice, 1);
-        this.dataSource._updateChangeSubscription();
-      }
-    }
-    
-    
-  }
 }

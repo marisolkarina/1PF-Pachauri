@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './cursos.component.html',
   styleUrls: ['./cursos.component.css']
 })
-export class CursosComponent implements OnInit, OnDestroy {
+export class CursosComponent implements OnInit{
 
   dataSource = new MatTableDataSource();
 
@@ -23,9 +23,7 @@ export class CursosComponent implements OnInit, OnDestroy {
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {}
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
+
   
   ngOnInit(): void {
     this.cursosService.cursos.subscribe({
