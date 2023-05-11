@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, catchError, map } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, catchError, map, of } from 'rxjs';
 import { Usuario } from '../models';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -25,27 +25,32 @@ export class AuthService {
     return this.authUser$.asObservable();
   }
 
+  establecerUsuarioAutenticado(usuario: Usuario): void {
+    this.authUser$.next(usuario);
+  }
+
   login(formValue: LoginFormValue): void {
 
-    this.httpClient.get<Usuario[]>(`${environment.apiBaseUrl}/usuarios`,
-      {
-        params: {
-          ...formValue
+    this.httpClient.get<Usuario[]>
+      (`${environment.apiBaseUrl}/usuarios`,
+        {
+          params: {
+            ...formValue
+          }
         }
-      }
     ).subscribe({
       next: (usuarios) => {
         const usuarioAutenticado = usuarios[0];
 
         if(usuarioAutenticado) {
           localStorage.setItem('token', usuarioAutenticado.token)
-          this.authUser$.next(usuarioAutenticado);
+          this.establecerUsuarioAutenticado(usuarioAutenticado);
           this.router.navigate(['dashboard']);
         } else {
           alert('Correo y contraseña incorrectos.')
         }
       }
-    })
+    });
   }
 
   logout(): void {
@@ -63,7 +68,7 @@ export class AuthService {
       {
         headers: new HttpHeaders({
           'Authorization': token || '',
-        })
+        }),
       }
     )
     .pipe(
@@ -75,12 +80,12 @@ export class AuthService {
         }
         return !!usuarioAutenticado;
       }),
+      catchError((err) => {
+        // alert('Error al verificar el token');
+        return of(false);
+      })
 
-    )
+    );
 
-    // if (storageValor) {
-    //   const usuario = JSON.parse(storageValor);
-    //   this.authUser$.next(usuario);
-    // }
   }
 }
