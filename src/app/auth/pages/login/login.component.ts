@@ -43,16 +43,11 @@ export class LoginComponent {
 
   login(): void {
     if(this.myForm.valid) {
-
       this.authService.login(this.myForm.value as LoginFormValue);
     } else {
-
+      this.myForm.markAllAsTouched();
       this.notificationsService.mostrarMensaje("Formulario inválido");
     }
-    
-    
   }
-
-
   
 }
