@@ -4,3 +4,9 @@ export interface Inscripcion{
     apellido: string;
     cursoInscrito: string;
 }
+
+export interface CrearInscripcionPayload {
+    nombre: string;
+    apellido: string;
+    cursoInscrito: string;
+}

@@ -21,11 +21,11 @@ export class AbmCursosComponent {
   constructor(private dialogRef: MatDialogRef<AbmCursosComponent>) {}
 
   guardar(): void {
-    if(this.myFormAdd.valid) {
-      this.dialogRef.close(this.myFormAdd.value);
+    if(this.myFormAdd.invalid) {
+      this.myFormAdd.markAllAsTouched();
     }
     else {
-      this.myFormAdd.markAllAsTouched();
+      this.dialogRef.close(this.myFormAdd.value);
     }
   }
 }

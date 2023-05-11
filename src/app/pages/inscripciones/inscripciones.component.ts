@@ -5,6 +5,9 @@ import { InscripcionesService } from './services/inscripciones.service';
 import { Observable } from 'rxjs';
 import { Usuario } from 'src/app/models';
 import { AuthService } from 'src/app/services/auth.service';
+import { AbmInscripcionesComponent } from './abm-inscripciones/abm-inscripciones.component';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-inscripciones',
@@ -19,9 +22,11 @@ export class InscripcionesComponent {
 
   displayedColumns: string[] = ['id', 'nombre', 'apellido', 'cursoInscrito', 'opciones'];
 
+
   constructor(
     private inscripcionesService: InscripcionesService,
-    private authService: AuthService
+    private authService: AuthService,
+    private dialog: MatDialog, 
   ) {
     this.authUserObs$ = this.authService.obtenerUsuarioAutenticado();
   }
@@ -33,6 +38,16 @@ export class InscripcionesComponent {
           this.dataSource.data = inscripciones;
         }
       })
+  }
+
+  crearABMInscripcion(): void {
+    const dialog = this.dialog.open(AbmInscripcionesComponent);
+    dialog.afterClosed()
+      .subscribe((formValue) => {
+        if (formValue) {
+          this.inscripcionesService.crearInscripcion(formValue);
+        }
+      });
   }
 
   eliminarInscripcion(inscripcion: Inscripcion): void {

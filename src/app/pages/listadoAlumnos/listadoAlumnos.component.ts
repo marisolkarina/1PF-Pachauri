@@ -39,12 +39,7 @@ export class ListadoAlumnosComponent implements OnInit {
         this.dataSource.data = alumnos;
       },
     })
-    // this.alumnosService.obtenerAlumnos()
-    //   .subscribe({
-    //     next: (alumnos) => {
-    //       this.dataSource.data = alumnos;
-    //     }
-    //   })
+
     this.alumnosService.obtenerAlumnos();
   }
 

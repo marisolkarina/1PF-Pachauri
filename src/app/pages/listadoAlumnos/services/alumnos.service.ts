@@ -4,26 +4,6 @@ import { Alumno, CrearAlumnoPayload } from '../models';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/envoronments';
 
-// const ALUMNOS_MOCKS: Alumno[] = [
-//   {
-//     id: 1,
-//     nombre: 'Juana',
-//     apellido: 'Sosa',
-//     fecha_registro: new Date(),
-//   },
-//   {
-//     id: 2,
-//     nombre: 'Rosa',
-//     apellido: 'Lima',
-//     fecha_registro: new Date(),
-//   },
-//   {
-//     id: 3,
-//     nombre: 'Lisa',
-//     apellido: 'Simpson',
-//     fecha_registro: new Date(),
-//   }
-// ]
 
 @Injectable({
   providedIn: 'root'
