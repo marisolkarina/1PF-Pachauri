@@ -5,6 +5,7 @@ export interface Alumno {
     fecha_registro: Date;
 }
 
+
 export interface CrearAlumnoPayload {
     nombre: string;
     apellido: string;

@@ -93,4 +93,33 @@ export class AlumnosService {
 
     return this.alumnos$.asObservable();
   }
+
+  editarAlumno(alumnoId: number, actualizacion: Partial<Alumno>): Observable<Alumno[]> {
+    this.alumnos$
+      .pipe(
+        take(1),
+      )
+
+      .subscribe({
+        next: (alumnos) => {
+
+          const cursosActualizados = alumnos.map((alumno) => {
+            if (alumno.id === alumnoId) {
+              return {
+                ...alumno,
+                ...actualizacion,
+              }
+            } else {
+              return alumno;
+            }
+          })
+
+          this.alumnos$.next(cursosActualizados);
+        },
+        complete: () => {},
+        error: () => {}
+      });
+
+    return this.alumnos$.asObservable();
+  }
 }

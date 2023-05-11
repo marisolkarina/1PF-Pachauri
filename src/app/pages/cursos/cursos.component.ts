@@ -5,6 +5,10 @@ import { Curso } from './models';
 import { MatDialog } from '@angular/material/dialog';
 import { AbmCursosComponent } from './abm-cursos/abm-cursos.component';
 import { ActivatedRoute, Router } from '@angular/router';
+//
+import { Usuario } from 'src/app/models';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-cursos',
@@ -12,6 +16,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./cursos.component.css']
 })
 export class CursosComponent implements OnInit{
+
+  authUserObs$: Observable<Usuario | null>;
 
   dataSource = new MatTableDataSource();
 
@@ -22,7 +28,10 @@ export class CursosComponent implements OnInit{
     private dialog: MatDialog, 
     private router: Router,
     private activatedRoute: ActivatedRoute,
-  ) {}
+    private authService: AuthService
+  ) {
+    this.authUserObs$ = this.authService.obtenerUsuarioAutenticado();
+  }
 
   
   ngOnInit(): void {
@@ -31,12 +40,6 @@ export class CursosComponent implements OnInit{
         this.dataSource.data = cursos;
       },
     })
-    // this.cursosService.obtenerCursos()
-    //   .subscribe({
-    //     next: (cursos) => {
-    //       this.dataSource.data = cursos;
-    //     }
-    //   })
     this.cursosService.obtenerCursos();
   }
 
@@ -61,4 +64,20 @@ export class CursosComponent implements OnInit{
       this.cursosService.eliminarCurso(curso.id);
     }
   }
+
+  editarCurso(curso: Curso): void {
+    const dialog = this.dialog.open(AbmCursosComponent, {
+      data: {
+        curso,
+      }
+    })
+
+    dialog.afterClosed()
+      .subscribe((formValue) => {
+        if (formValue) {
+          this.cursosService.editarCurso(curso.id, formValue);
+        }
+      })
+  }
+
 }

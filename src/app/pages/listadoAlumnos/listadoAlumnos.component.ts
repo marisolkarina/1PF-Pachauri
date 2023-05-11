@@ -5,6 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlumnosService } from './services/alumnos.service';
 import { Alumno } from './models';
+import { Observable } from 'rxjs';
+import { Usuario } from 'src/app/models';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-listadoAlumnos',
@@ -12,6 +15,8 @@ import { Alumno } from './models';
   styleUrls: ['./listadoAlumnos.component.css']
 })
 export class ListadoAlumnosComponent implements OnInit {
+
+  authUserObs$: Observable<Usuario | null>;
 
   dataSource = new MatTableDataSource<Alumno>();
 
@@ -21,8 +26,11 @@ export class ListadoAlumnosComponent implements OnInit {
     private dialog: MatDialog, 
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private alumnosService: AlumnosService
-  ) {}
+    private alumnosService: AlumnosService,
+    private authService: AuthService
+  ) {
+    this.authUserObs$ = this.authService.obtenerUsuarioAutenticado();
+  }
 
 
   ngOnInit(): void {
@@ -62,13 +70,24 @@ export class ListadoAlumnosComponent implements OnInit {
 
   eliminarABMAlumno(alumno: Alumno): void {
     if(confirm('Está seguro?')) {
-      // const indice = this.dataSource.data.findIndex((est) => est.id === row.id);
-      // if (indice >= 0) {
-      //   this.dataSource.data.splice(indice, 1);
-      //   this.dataSource._updateChangeSubscription();
-      // }
       this.alumnosService.eliminarAlumno(alumno.id)
     }    
   }
+
+  editarAlumno(alumno: Alumno): void {
+    const dialog = this.dialog.open(AbmAlumnosComponent, {
+      data: {
+        alumno,
+      }
+    })
+
+    dialog.afterClosed()
+      .subscribe((formValue) => {
+        if (formValue) {
+          this.alumnosService.editarAlumno(alumno.id, formValue);
+        }
+      })
+  }
+
 
 }

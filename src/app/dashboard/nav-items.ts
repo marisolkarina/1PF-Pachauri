@@ -13,12 +13,12 @@ const mylinks: NavItem[] = [
     {
         path: 'alumnos',
         title: 'Alumnos',
-        icon: 'person'
+        icon: 'school'
     },
     {
         path: 'cursos',
         title: 'Cursos',
-        icon: 'school'
+        icon: 'auto_stories'
     }
 
 ]

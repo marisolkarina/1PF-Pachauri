@@ -26,16 +26,6 @@ export class AuthService {
   }
 
   login(formValue: LoginFormValue): void {
-    // const usuario = {
-    //   id: 1,
-    //   nombre: 'MOCK',
-    //   apellido: 'USER',
-    //   email: formValue.email,
-    //   password: '123'
-    // }
-    // localStorage.setItem('auth-user',JSON.stringify(usuario));
-    // this.authUser$.next(usuario);
-    // this.router.navigate(['dashboard'])
 
     this.httpClient.get<Usuario[]>(`${environment.apiBaseUrl}/usuarios`,
       {

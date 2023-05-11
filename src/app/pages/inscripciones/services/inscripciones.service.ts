@@ -1,22 +1,43 @@
 import { Injectable } from '@angular/core';
 import { Inscripcion } from '../models';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, take } from 'rxjs';
 
 const INSCRIPCIONES_MOCKS: Inscripcion[] = [
   {
     id: 1,
-    nombreCompleto: 'Juana Sosa',
+    nombre: 'Juana',
+    apellido: 'Sosa',
     cursoInscrito: 'Geometría Analítica'
   },
   {
     id: 2,
-    nombreCompleto: 'Rosa Lima',
+    nombre: 'Juana',
+    apellido: 'Sosa',
+    cursoInscrito: 'Álgebra Lineal'
+  },
+  {
+    id: 3,
+    nombre: 'Rosa',
+    apellido: 'Lima',
     cursoInscrito: 'Cálculo Integral'
   },
   {
-    id: 1,
-    nombreCompleto: 'Lisa Simpson',
+    id: 4,
+    nombre: 'Rosa',
+    apellido: 'Lima',
+    cursoInscrito: 'Desarrollo Adaptativo de Software'
+  },
+  {
+    id: 5,
+    nombre: 'Lisa',
+    apellido: 'Simpson',
     cursoInscrito: 'Estadística y Probabilidades'
+  },
+  {
+    id: 6,
+    nombre: 'Lisa',
+    apellido: 'Simpson',
+    cursoInscrito: 'Arquitectura Empresarial'
   },
 ]
 
@@ -33,4 +54,22 @@ export class InscripcionesService {
     this.inscripciones$.next(INSCRIPCIONES_MOCKS);
     return this.inscripciones$.asObservable();
   }
+
+  eliminarInscripcion(inscripcionId: number): Observable<Inscripcion[]> {
+    this.inscripciones$
+    .pipe(
+      take(1)
+    )
+    .subscribe({
+      next: (inscripciones) => {
+        const alumnosActualizados = inscripciones.filter((inscripcion) => inscripcion.id !== inscripcionId)
+        this.inscripciones$.next(alumnosActualizados);
+      },
+      complete: () => {},
+      error: () => {}
+    });
+
+    return this.inscripciones$.asObservable();
+  }
+
 }

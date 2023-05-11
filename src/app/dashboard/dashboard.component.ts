@@ -3,7 +3,6 @@ import { AuthService } from '../services/auth.service';
 import { Usuario } from '../models';
 import { Observable, Subject} from 'rxjs';
 import mylinks from './nav-items';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,12 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnDestroy {
-
-  // apareceLogin = true;
-  // apareceRegister = true;
-  // apareceJson = true;
-
-  // authUser: Usuario | null = null;
 
   authUserObs$: Observable<Usuario | null>;
 
@@ -26,36 +19,16 @@ export class DashboardComponent implements OnDestroy {
 
   constructor(
     private authService: AuthService,
-    private router: Router
   ) { 
     this.authUserObs$ = this.authService.obtenerUsuarioAutenticado();
-    
-    // this.authService.obtenerUsuarioAutenticado()
-    //   .pipe(
-    //     takeUntil(this.destroyed$)
-    //   )
-    //   .subscribe((usuario) => this.authUser = usuario);
   }
 
   ngOnDestroy(): void {
-    // this.suscripcionAuthUser?.unsubscribe();
     this.destroyed$.next();
     this.destroyed$.complete();
   }
 
-  // goLogin(): void {
-  //   this.router.navigate(['dashboard','login']);
-  //   this.apareceLogin = false;
-  //   this.apareceJson = false;
-  // }
-  // goRegister(): void {
-  //   this.router.navigate(['dashboard','register']);
-  //   this.apareceRegister = false;
-  //   this.apareceJson = true;
-  // }
   cerrarSesion(): void {
-    // this.router.navigate(['dashboard']);
-    // this.apareceJson = true;
     this.authService.logout();
   }
 

@@ -7,18 +7,28 @@
         <p> MI CUENTA </p>
         <p>{{ (authUserObs$ | async)?.nombre }}</p>
         <p>{{ (authUserObs$ | async)?.email }}</p>
-        <!-- <p>{{ authUser?.email }}</p> -->
+        <p>{{ (authUserObs$ | async)?.role }}</p>
 
         <mat-nav-list>
             <a 
+                *ngIf="(authUserObs$ | async)?.role === 'admin'"
+                [routerLink]="['/dashboard/usuarios']"
+                mat-list-item 
+            >
+                <mat-icon>person</mat-icon>
+                Usuarios
+            </a>
+
+            <a 
                 [routerLink]="link.path"
                 mat-list-item 
-                *ngFor="let link of links" >
-
-                <mat-icon>{{ link.icon }}</mat-icon>
-                {{ link.title }}
+                *ngFor="let link of links" 
                 
+            >
+                <mat-icon>{{ link.icon }}</mat-icon>
+                {{ link.title }}   
             </a>
+
             <a
                 (click)="cerrarSesion()"
                 mat-list-item

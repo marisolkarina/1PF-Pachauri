@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CursosModule } from './pages/cursos/cursos.module';
 import { InscripcionesModule } from './pages/inscripciones/inscripciones.module';
 import { HttpClientModule } from '@angular/common/http';
+import { UsuariosModule } from './pages/usuarios/usuarios.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     CursosModule,
     InscripcionesModule,
-    HttpClientModule
+    HttpClientModule,
+    UsuariosModule
     
   ],
   providers: [],

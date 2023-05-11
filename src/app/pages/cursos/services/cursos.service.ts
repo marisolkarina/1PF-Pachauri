@@ -4,27 +4,6 @@ import { CrearCursoPayload, Curso } from '../models';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/envoronments';
 
-// const CURSOS_MOCKS: Curso[] = [
-//   {
-//     id: 1,
-//     nombre: 'Geometría Analítica',
-//     fecha_inicio: new Date(),
-//     fecha_fin: new Date()
-//   },
-//   {
-//     id: 2,
-//     nombre: 'Cálculo Integral',
-//     fecha_inicio: new Date(),
-//     fecha_fin: new Date()
-//   },
-//   {
-//     id: 3,
-//     nombre: 'Estadística y Probabilidades',
-//     fecha_inicio: new Date(),
-//     fecha_fin: new Date()
-//   }
-// ]
-
 
 @Injectable({
   providedIn: 'root'
@@ -90,6 +69,35 @@ export class CursosService {
       complete: () => {},
       error: () => {}
     });
+
+    return this.cursos$.asObservable();
+  }
+
+  editarCurso(cursoId: number, actualizacion: Partial<Curso>): Observable<Curso[]> {
+    this.cursos$
+      .pipe(
+        take(1),
+      )
+
+      .subscribe({
+        next: (cursos) => {
+
+          const cursosActualizados = cursos.map((curso) => {
+            if (curso.id === cursoId) {
+              return {
+                ...curso,
+                ...actualizacion,
+              }
+            } else {
+              return curso;
+            }
+          })
+
+          this.cursos$.next(cursosActualizados);
+        },
+        complete: () => {},
+        error: () => {}
+      });
 
     return this.cursos$.asObservable();
   }

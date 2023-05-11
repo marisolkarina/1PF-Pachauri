@@ -12,7 +12,7 @@
     </p>
     <p>FECHA DE REGISTRO: {{alumno?.fecha_registro}}</p>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>CALIFICACIONES</button>
-  </mat-card-actions>
+
+  <a mat-button [routerLink]="['/dashboard/inscripciones']">Ver inscripciones</a>
+
 </mat-card>

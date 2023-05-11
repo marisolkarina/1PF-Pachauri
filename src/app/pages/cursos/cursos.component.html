@@ -1,6 +1,6 @@
 <p appFontSize>Listado de cursos</p>
 
-<button (click)="crearCurso()" mat-flat-button color="primary" >
+<button *ngIf="(authUserObs$ | async)?.role === 'admin'" (click)="crearCurso()" mat-flat-button color="primary" >
   <mat-icon>add</mat-icon>
   Agregar curso
 </button>
@@ -38,7 +38,10 @@
       <button mat-icon-button color="primary" (click)="verDetalle(curso.id)">
         <mat-icon>visibility</mat-icon>
       </button>
-      <button mat-icon-button color="warn" (click)="eliminarABMCurso(curso)">
+      <button *ngIf="(authUserObs$ | async)?.role === 'admin'" mat-icon-button color="warn" (click)="editarCurso(curso)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button *ngIf="(authUserObs$ | async)?.role === 'admin'" mat-icon-button color="warn" (click)="eliminarABMCurso(curso)">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-cell>
