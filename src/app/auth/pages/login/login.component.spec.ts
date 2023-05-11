@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AuthService } from "src/app/services/auth.service";
+import { AuthServiceMock } from "../../mocks/auth-service.mock";
 
 describe('Pruebas del LoginComponent', () => {
     let component: LoginComponent;
@@ -23,6 +24,12 @@ describe('Pruebas del LoginComponent', () => {
                 ReactiveFormsModule,
                 MatInputModule,
                 BrowserAnimationsModule,
+            ],
+            providers: [
+                {
+                    provide: AuthService,
+                    useClass: AuthServiceMock
+                }
             ]
         }).compileComponents();
         const fixture = TestBed.createComponent(LoginComponent);
