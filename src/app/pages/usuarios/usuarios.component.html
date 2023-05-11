@@ -1,1 +1,46 @@
-<p>En proceso la renderización de usuarios</p>
+<p appFontSize>Listado de usuarios</p>
+
+<table mat-table [dataSource]="dataSource">
+    <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let student"> {{student.id}} </td>
+  </ng-container>
+
+  <!--Nombre completo Column-->
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let usuario"> 
+        {{usuario.nombre}}
+    </td>
+  </ng-container>
+
+  <!--Apellido completo Column-->
+  <ng-container matColumnDef="apellido">
+    <th mat-header-cell *matHeaderCellDef> Apellido </th>
+    <td mat-cell *matCellDef="let usuario"> 
+        {{usuario.apellido}}
+    </td>
+  </ng-container>
+
+  <!-- Curso Column -->
+  <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef> Role </th>
+    <td mat-cell *matCellDef="let user"> {{user.role}} </td>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="opciones">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Opciones </th>
+    <mat-cell *matCellDef="let alumno">
+      <button mat-icon-button color="primary" (click)="editarAlumno(alumno)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button  mat-icon-button color="warn" (click)="eliminarABMAlumno(alumno)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container> -->
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

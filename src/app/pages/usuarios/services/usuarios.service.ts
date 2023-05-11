@@ -19,21 +19,14 @@ export class UsuariosService {
     return this.usuarios$.asObservable();
   }
 
-  obtenerAlumnos(): void {
+  obtenerUsuarios(): void {
 
-    this.httpClient.get<Usuario[]>(`${environment.apiBaseUrl}/alumnos`)
+    this.httpClient.get<Usuario[]>(`${environment.apiBaseUrl}/usuarios`)
     .subscribe({
       next: (usuarios) => {
         this.usuarios$.next(usuarios);
       }
     })
-  }
-
-  obtenerUsuarioPorId(id: number): Observable<Usuario | undefined> {
-    return this.usuarios$.asObservable()
-      .pipe(
-        map((usuarios) => usuarios.find((u) => u.id === id))
-      )
   }
 
 
