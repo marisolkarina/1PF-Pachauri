@@ -14,7 +14,7 @@ export class UsuariosComponent {
 
   dataSource = new MatTableDataSource<Usuario>();
 
-  displayedColumns: string[] = ['id', 'nombre', 'apellido', 'role'];
+  displayedColumns: string[] = ['id', 'nombre', 'apellido', 'role', 'opciones'];
 
   constructor(
     // private dialog: MatDialog, 
@@ -36,6 +36,11 @@ export class UsuariosComponent {
     this.usuariosService.obtenerUsuarios();
   }
 
+  eliminarABMUsuario(usuario: Usuario): void {
+    if(confirm('Está seguro?')) {
+      this.usuariosService.eliminarUsuario(usuario.id)
+    }    
+  }
   
 
 }

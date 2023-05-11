@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map, take } from 'rxjs';
 import { Usuario } from 'src/app/models';
 import { environment } from 'src/environments/envoronments';
 
@@ -27,6 +27,23 @@ export class UsuariosService {
         this.usuarios$.next(usuarios);
       }
     })
+  }
+
+  eliminarUsuario(alumnoId: number): Observable<Usuario[]> {
+    this.usuarios$
+    .pipe(
+      take(1)
+    )
+    .subscribe({
+      next: (usuarios) => {
+        const usuariosActualizados = usuarios.filter((usuario) => usuario.id !== alumnoId)
+        this.usuarios$.next(usuariosActualizados);
+      },
+      complete: () => {},
+      error: () => {}
+    });
+
+    return this.usuarios$.asObservable();
   }
 
 
