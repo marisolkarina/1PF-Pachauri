@@ -29,14 +29,14 @@ export class UsuariosService {
     })
   }
 
-  eliminarUsuario(alumnoId: number): Observable<Usuario[]> {
+  eliminarUsuario(usuarioId: number): Observable<Usuario[]> {
     this.usuarios$
     .pipe(
       take(1)
     )
     .subscribe({
       next: (usuarios) => {
-        const usuariosActualizados = usuarios.filter((usuario) => usuario.id !== alumnoId)
+        const usuariosActualizados = usuarios.filter((usuario) => usuario.id !== usuarioId)
         this.usuarios$.next(usuariosActualizados);
       },
       complete: () => {},
@@ -46,5 +46,33 @@ export class UsuariosService {
     return this.usuarios$.asObservable();
   }
 
+  editarUsuario(usuarioId: number, actualizacion: Partial<Usuario>): Observable<Usuario[]> {
+    this.usuarios$
+      .pipe(
+        take(1),
+      )
+
+      .subscribe({
+        next: (usuarios) => {
+
+          const usuariosActualizados = usuarios.map((usuario) => {
+            if (usuario.id === usuarioId) {
+              return {
+                ...usuario,
+                ...actualizacion,
+              }
+            } else {
+              return usuario;
+            }
+          })
+
+          this.usuarios$.next(usuariosActualizados);
+        },
+        complete: () => {},
+        error: () => {}
+      });
+
+    return this.usuarios$.asObservable();
+  }
 
 }

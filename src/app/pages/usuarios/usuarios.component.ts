@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/models';
 import { UsuariosService } from './services/usuarios.service';
+import { AbmUsuariosComponent } from './abm-usuarios/abm-usuarios.component';
 
 @Component({
   selector: 'app-usuarios',
@@ -17,7 +18,7 @@ export class UsuariosComponent {
   displayedColumns: string[] = ['id', 'nombre', 'apellido', 'role', 'opciones'];
 
   constructor(
-    // private dialog: MatDialog, 
+    private dialog: MatDialog, 
     // private router: Router,
     // private activatedRoute: ActivatedRoute,
     private usuariosService: UsuariosService,
@@ -42,5 +43,19 @@ export class UsuariosComponent {
     }    
   }
   
+  editarUsuario(usuario: Usuario): void {
+    const dialog = this.dialog.open(AbmUsuariosComponent, {
+      data: {
+        usuario,
+      }
+    })
+
+    dialog.afterClosed()
+      .subscribe((formValue) => {
+        if (formValue) {
+          this.usuariosService.editarUsuario(usuario.id, formValue);
+        }
+      })
+  }
 
 }

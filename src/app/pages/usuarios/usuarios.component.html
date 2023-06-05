@@ -32,9 +32,9 @@
   <ng-container matColumnDef="opciones">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Opciones </th>
     <mat-cell *matCellDef="let user">
-      <!-- <button mat-icon-button color="primary" (click)="editarAlumno(alumno)">
+      <button mat-icon-button color="primary" (click)="editarUsuario(user)">
         <mat-icon>edit</mat-icon>
-      </button> -->
+      </button>
       <button  mat-icon-button color="warn" (click)="eliminarABMUsuario(user)">
         <mat-icon>delete</mat-icon>
       </button>

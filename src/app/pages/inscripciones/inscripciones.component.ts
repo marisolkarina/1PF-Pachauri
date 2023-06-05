@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./inscripciones.component.css']
 })
 export class InscripcionesComponent {
-  //
+
   authUserObs$: Observable<Usuario | null>;
 
   dataSource = new MatTableDataSource<Inscripcion>();

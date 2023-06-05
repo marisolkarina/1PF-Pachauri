@@ -6,12 +6,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { AbmUsuariosComponent } from './abm-usuarios/abm-usuarios.component';
 
 
 
 @NgModule({
   declarations: [
-    UsuariosComponent
+    UsuariosComponent,
+    AbmUsuariosComponent
   ],
   imports: [
     CommonModule,
@@ -20,6 +23,8 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     MatDialogModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    
   ]
 })
 export class UsuariosModule { }
