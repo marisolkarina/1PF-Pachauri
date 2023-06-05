@@ -1,0 +1,8 @@
+.my-card {
+    max-width: 300px;
+}
+  
+.my-header-image {
+    background-image: url('https://www.cepeban.edu.pe/wp-content/uploads/2020/10/Atencion-al-Alumno-Inicio.png');
+    background-size: cover;
+}

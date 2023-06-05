@@ -1,0 +1,20 @@
+<mat-card class="my-card">
+  <mat-card-header>
+    <div mat-card-avatar class="my-header-image"></div>
+    <mat-card-title>{{curso?.nombre}} </mat-card-title>
+    <mat-card-subtitle>Fecha inicio: {{curso?.fecha_inicio | date: 'shortDate'}}</mat-card-subtitle>
+    <mat-card-subtitle>Fecha fin: {{curso?.fecha_fin | date: 'shortDate'}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://unipython.com/wp-content/uploads/2019/09/unipython-curso-programacion-983x777.jpg" alt="Photo of a Subject">
+  <mat-card-content>
+    <h4>DESCRIPCIÓN DEL CURSO</h4>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit obcaecati non aliquam optio numquam sit perferendis, 
+      impedit esse corrupti id quasi itaque nisi, consequatur natus facilis quod veniam? Distinctio, eos!
+    </p>
+    <h4>Alumnos inscritos</h4>
+    <ul>
+      <li>Juana Sosa</li>
+    </ul>
+  </mat-card-content>
+</mat-card>

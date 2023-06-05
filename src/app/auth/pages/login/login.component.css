@@ -1,0 +1,9 @@
+form {
+    height: 100vh;
+    background-color: plum;
+    padding: 10rem;
+}
+
+form mat-form-field {
+    margin: 0.8rem;
+}

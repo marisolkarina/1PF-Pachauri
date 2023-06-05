@@ -1,0 +1,82 @@
+<mat-drawer-container class="example-container" autosize>
+
+    <!--MI SIDEBAR-->
+    <mat-drawer [opened]="true" #drawer class="example-sidenav" mode="side">
+        
+        <img width="100" src="../../assets/user.png">
+        <p> MI CUENTA </p>
+        <p>{{ (authUserObs$ | async)?.nombre }}</p>
+        <p>{{ (authUserObs$ | async)?.email }}</p>
+        <p>{{ (authUserObs$ | async)?.role }}</p>
+
+        <mat-nav-list>
+            <a 
+                *ngIf="(authUserObs$ | async)?.role === 'admin'"
+                [routerLink]="['/dashboard/usuarios']"
+                mat-list-item 
+            >
+                <mat-icon>person</mat-icon>
+                Usuarios
+            </a>
+
+            <a 
+                [routerLink]="link.path"
+                mat-list-item 
+                *ngFor="let link of links" 
+                
+            >
+                <mat-icon>{{ link.icon }}</mat-icon>
+                {{ link.title }}   
+            </a>
+
+            <a
+                (click)="cerrarSesion()"
+                mat-list-item
+            >
+                Cerrar sesión
+            </a>
+        </mat-nav-list>   
+             
+    </mat-drawer>
+
+    <!--MI WRAPPER-->
+    <div class="example-sidenav-content">
+        <!--TOOLBAR-->
+        <mat-toolbar color="primary">
+            <button 
+                mat-icon-button 
+                class="example-icon" 
+                aria-label="Example icon-button with menu icon" 
+                (click)="drawer.toggle()"
+            >
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>Registro de alumnos</span>
+            <span class="example-spacer"></span>
+            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                <mat-icon>favorite</mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+                <mat-icon>share</mat-icon>
+            </button>
+        </mat-toolbar>
+    </div>
+    <main class="m-2">
+
+
+        <!--FORMULARIO-->
+        <!-- <app-formulario></app-formulario> -->
+
+        <!--OBSERVABLE-->
+        <!-- <app-observables></app-observables> -->
+        <!-- <button mat-raised-button color="primary" (click)="goLogin()" *ngIf="apareceLogin">Login</button>
+        <button mat-raised-button color="primary" (click)="goRegister()" *ngIf="apareceRegister">Register</button> -->
+
+        <!-- <p *ngIf="!apareceJson">PIPE ASYNC DE LA CUENTA  : {{ authUserObs$ | async | json }}</p> -->
+        <!--TABLA-->
+        <!-- <app-listadoAlumnos></app-listadoAlumnos> -->
+        <router-outlet></router-outlet>
+        
+    </main>
+</mat-drawer-container>
+

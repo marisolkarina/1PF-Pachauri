@@ -1,0 +1,48 @@
+<div mat-dialog-content>
+    <form [formGroup]="myFormAdd">
+        <mat-form-field appearance="fill">
+                <mat-label>Curso</mat-label>
+                <input 
+                    matInput 
+                    placeholder="curso"
+                    [formControl] = controlCurso 
+                    #input 
+                    maxlength="15"
+                >
+                <mat-hint >{{input.value.length}}/15</mat-hint>
+                <mat-error>Ingrese el curso</mat-error>
+    
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha de inicio</mat-label>
+            <input 
+                matInput 
+                placeholder="fecha_inicio"
+                [formControl] = controlFechaInicio
+                type="date"
+            >
+            <mat-error>Ingrese fecha de inicio</mat-error>
+        
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha de fin</mat-label>
+            <input 
+                matInput 
+                placeholder="fecha_fin"
+                [formControl] = controlFechaFin
+                type="date"
+            >
+            <mat-error>Ingrese fecha de fin</mat-error>
+        
+        </mat-form-field>
+        
+    </form>
+
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button>Cancelar</button>
+    <button mat-button (click)="guardar()">Guardar</button>
+</div>

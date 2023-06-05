@@ -1,0 +1,62 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Marisol",
+      "apellido": "Pachauri",
+      "email": "marisol.kari.20@gmail.com",
+      "password": "123456",
+      "token": "abcdefghijk",
+      "role": "admin"
+    },
+    {
+      "nombre": "Juana",
+      "apellido": "Sosa",
+      "email": "ss@mail.com",
+      "password": "123456",
+      "token": "acbderxmjht",
+      "role": "user",
+      "id": 2
+    }
+  ],
+  "cursos": [
+    {
+      "id": 1,
+      "nombre": "Geometría Analítica",
+      "fecha_inicio": "2023-04-27T01:27:59.631Z",
+      "fecha_fin": "2024-04-27T01:27:59.631Z"
+    },
+    {
+      "id": 2,
+      "nombre": "Cálculo Integral",
+      "fecha_inicio": "2023-04-27T01:27:59.631Z",
+      "fecha_fin": "2024-04-27T01:27:59.631Z"
+    },
+    {
+      "id": 3,
+      "nombre": "Estadística y Probabilidades",
+      "fecha_inicio": "2023-04-27T01:27:59.631Z",
+      "fecha_fin": "2024-04-27T01:27:59.631Z"
+    }
+  ],
+  "alumnos": [
+    {
+      "id": 1,
+      "nombre": "Juana",
+      "apellido": "Sosa",
+      "fecha_registro": "2024-03-27T01:27:59.631Z"
+    },
+    {
+      "id": 2,
+      "nombre": "Rosa",
+      "apellido": "Lima",
+      "fecha_registro": "2024-03-27T01:27:59.631Z"
+    },
+    {
+      "id": 3,
+      "nombre": "Lisa",
+      "apellido": "Simpson",
+      "fecha_registro": "2024-03-27T01:27:59.631Z"
+    }
+  ]
+}

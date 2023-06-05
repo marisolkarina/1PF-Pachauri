@@ -1,0 +1,8 @@
+.my-card {
+    max-width: 300px;
+}
+  
+.my-header-image {
+    background-image: url('https://unipython.com/wp-content/uploads/2019/09/unipython-curso-programacion-983x777.jpg');
+    background-size: cover;
+}
